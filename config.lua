@@ -6,6 +6,7 @@ reload "user.git"
 reload "user.whichkey"
 
 reload "user.lsp"
+reload "user.cmp"
 reload "user.smoothie"
 reload "user.fidget"
 reload "user.colorizer"

@@ -76,6 +76,13 @@ lvim.builtin.which_key.mappings["G"] = {
   f = { '<cmd> lua require("hierarchy-tree-go").focus()<cr>', "Focus window" },
 }
 
+lvim.builtin.which_key.mappings["D"] = {
+  name = "DB",
+  u = { '<cmd>lua require("dbee").toggle()<cr>', "Toggle DB" },
+  s = { '<cmd>lua require("dbee").store("csv", "file", {extra_arg = "~/data"})<cr>', "Store DB" },
+
+}
+
 lvim.builtin.which_key.mappings["o"] = {
   name = "Options",
   w = { '<cmd>lua require("user.functions").toggle_option("wrap")<cr>', "Wrap" },

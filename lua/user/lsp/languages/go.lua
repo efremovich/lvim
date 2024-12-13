@@ -15,6 +15,7 @@ actions.setup {
   { command = "gomodifytags", filetypes = { "go" } },
   -- { command = "refactoring", filetypes = { "go" } },
 }
+
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "gopls" })
 local lsp_manager = require "lvim.lsp.manager"
 
