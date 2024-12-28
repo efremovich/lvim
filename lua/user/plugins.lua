@@ -6,7 +6,10 @@ lvim.plugins = {
     name = "catppuccin",
     priority = 1000
   },
-
+  {
+    "ggandor/lightspeed.nvim",
+    event = "BufRead",
+  },
   -- Treesitter
   "nvim-treesitter/nvim-treesitter-textobjects",
   "nvim-treesitter/playground",
@@ -122,32 +125,6 @@ lvim.plugins = {
       "hrsh7th/nvim-cmp",
     },
   },
-  {
-    "monkoose/neocodeium",
-    event = "VeryLazy",
-    config = function()
-      local neocodeium = require("neocodeium")
-      neocodeium.setup()
-      vim.keymap.set("i", "<A-f>", function()
-        require("neocodeium").accept()
-      end)
-      vim.keymap.set("i", "<A-w>", function()
-        require("neocodeium").accept_word()
-      end)
-      vim.keymap.set("i", "<A-a>", function()
-        require("neocodeium").accept_line()
-      end)
-      vim.keymap.set("i", "<A-v>", function()
-        require("neocodeium").cycle_or_complete()
-      end)
-      vim.keymap.set("i", "<A-r>", function()
-        require("neocodeium").cycle_or_complete(-1)
-      end)
-      vim.keymap.set("i", "<A-c>", function()
-        require("neocodeium").clear()
-      end)
-    end,
-  },
   -- DB
   {
     "kndndrj/nvim-dbee",
@@ -162,23 +139,11 @@ lvim.plugins = {
         opts = {},  -- needed
       },
     },
-    opts = {
-      sources = {
-        { "cmp-dbee" },
-      },
-    },
     build = function()
       -- Install tries to automatically detect the install method.
       -- if it fails, try calling it with one of these parameters:
       --    "curl", "wget", "bitsadmin", "go"
       require("dbee").install()
-    end,
-    config = function()
-      require("dbee").setup {
-        ui = {
-          syntax_highlight = true, -- включить поддержку подсветки синтаксиса
-        },
-      }
     end
   }
 }
