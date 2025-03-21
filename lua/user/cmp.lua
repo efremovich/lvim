@@ -1,3 +1,4 @@
+lvim.builtin.cmp.enabled = false
 lvim.builtin.cmp.formatting = {
   fields = { "kind", "abbr", "menu" },
   max_width = 0,

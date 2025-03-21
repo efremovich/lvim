@@ -18,10 +18,6 @@ lvim.plugins = {
   "olexsmir/gopher.nvim",
   "leoluz/nvim-dap-go",
   {
-    'crusj/hierarchy-tree-go.nvim',
-    dependencies = 'neovim/nvim-lspconfig'
-  },
-  {
     "stevearc/aerial.nvim", --Outline
     config = function()
       require("aerial").setup()
@@ -62,45 +58,20 @@ lvim.plugins = {
     opts = {},
   },
   {
-    "mikavilpas/yazi.nvim",
-    event = "VeryLazy",
-    keys = {
-      -- 👇 in this section, choose your own keymappings!
-      {
-        "<leader>-",
-        "<cmd>Yazi<cr>",
-        desc = "Open yazi at the current file",
-      },
-      {
-        -- Open in the current working directory
-        "<leader>cw",
-        "<cmd>Yazi cwd<cr>",
-        desc = "Open the file manager in nvim's working directory",
-      },
-      {
-        -- NOTE: this requires a version of yazi that includes
-        -- https://github.com/sxyazi/yazi/pull/1305 from 2024-07-18
-        '<c-up>',
-        "<cmd>Yazi toggle<cr>",
-        desc = "Resume the last yazi session",
-      },
-    },
-    opts = {
-      -- if you want to open yazi instead of netrw, see below for more info
-      open_for_directories = false,
-      keymaps = {
-        show_help = '<f1>',
-      },
-    },
-  },
-  {
     "rachartier/tiny-inline-diagnostic.nvim",
     event = "VeryLazy", -- Or `LspAttach`
     priority = 1000,    -- needs to be loaded in first
-    config = function()
-      require('tiny-inline-diagnostic').setup()
-    end
   },
+  {
+    "renerocksai/telekasten.nvim",
+    lazy = false,
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "nvim-lua/plenary.nvim",
+    },
+  },
+  "ThePrimeagen/harpoon",
+  "MattesGroeger/vim-bookmarks",
 
   -- find and replase
   "windwp/nvim-spectre",
@@ -117,14 +88,6 @@ lvim.plugins = {
     },
   },
 
-  -- A.I.
-  {
-    "Exafunction/codeium.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "hrsh7th/nvim-cmp",
-    },
-  },
   -- DB
   {
     "kndndrj/nvim-dbee",
@@ -145,5 +108,70 @@ lvim.plugins = {
       --    "curl", "wget", "bitsadmin", "go"
       require("dbee").install()
     end
-  }
+  },
+  -- GoDoc
+  {
+    "fredrikaverpil/godoc.nvim",
+    version = "*",
+    dependencies = {
+      { "nvim-telescope/telescope.nvim" }, -- optional
+      { "folke/snacks.nvim" },             -- optional
+      {
+        "nvim-treesitter/nvim-treesitter",
+        opts = {
+          ensure_installed = { "go" },
+        },
+      },
+    },
+    build = "go install github.com/lotusirous/gostdsym/stdsym@latest", -- optional
+    cmd = { "GoDoc" },
+    opts = {},
+  },
+  { 'edluffy/hologram.nvim' },
+  {
+    "ovk/endec.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- Override default configuration here
+    }
+  },
+  -- lazy.nvim
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    }
+  },
+  {
+    'saghen/blink.cmp',
+    dependencies = {
+      {
+        'saghen/blink.compat',
+        version = '*',
+        opts = {
+          enable_events = true
+        },
+      },
+      {
+        "Exafunction/codeium.nvim",
+        cmd = "Codeium",
+        build = ":Codeium Auth",
+      },
+    },
+    version = '*',
+    opts_extend = { "sources.default" }
+  },
+  { "xzbdmw/colorful-menu.nvim" },
+  { 'arnamak/stay-centered.nvim' },
+  { 'jbyuki/one-small-step-for-vimkind' },
+  { 'mfussenegger/nvim-dap' },
 }

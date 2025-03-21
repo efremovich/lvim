@@ -90,6 +90,7 @@ lvim.builtin.which_key.mappings["o"] = {
   l = { '<cmd>lua require("user.functions").toggle_option("cursorline")<cr>', "Cursorline" },
   s = { '<cmd>lua require("user.functions").toggle_option("spell")<cr>', "Spell" },
   t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
+  m = { '<cmd>lua require("stay-centered").toggle<cr>', "Toggle stay-centered.nvim" },
 }
 
 lvim.builtin.which_key.mappings["d"] = {
@@ -104,4 +105,35 @@ lvim.builtin.which_key.mappings["d"] = {
   l = { "<cmd>lua require'dap'.run_last()<cr>", "Last" },
   u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
   x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
+}
+
+lvim.builtin.which_key.mappings["n"] = {
+  name = "Notes",
+  c = { "<cmd>Telekasten show_calendar<cr>", "Calendar" },
+  n = { "<cmd>Telekasten new_note<cr>", "Note" },
+  f = { "<cmd>Telekasten find_notes<cr>", "Find" },
+  F = { "<cmd>Telekasten find_daily_notes<cr>", "Find Journal" },
+  j = { "<cmd>Telekasten goto_today<cr>", "Journal" },
+  p = { "<cmd>Telekasten panel<cr>", "Panel" },
+  t = { "<cmd>Telekasten toggle_todo<cr>", "Toggle Todo" },
+}
+
+lvim.builtin.which_key.mappings["m"] = {
+  a = { "<cmd>silent BookmarkAnnotate<cr>", "Annotate" },
+  c = { "<cmd>silent BookmarkClear<cr>", "Clear" },
+  b = { "<cmd>silent BookmarkToggle<cr>", "Toggle" },
+  m = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Harpoon" },
+  ["."] = { '<cmd>lua require("harpoon.ui").nav_next()<cr>', "Harpoon Next" },
+  [","] = { '<cmd>lua require("harpoon.ui").nav_prev()<cr>', "Harpoon Prev" },
+  l = { "<cmd>lua require('user.bfs').open()<cr>", "Buffers" },
+  j = { "<cmd>silent BookmarkNext<cr>", "Next" },
+  s = { "<cmd>Telescope harpoon marks<cr>", "Search Files" },
+  k = { "<cmd>silent BookmarkPrev<cr>", "Prev" },
+  S = { "<cmd>silent BookmarkShowAll<cr>", "Prev" },
+  -- s = {
+  --   "<cmd>lua require('telescope').extensions.vim_bookmarks.all({ hide_filename=false, prompt_title=\"bookmarks\", shorten_path=false })<cr>",
+  --   "Show",
+  -- },
+  x = { "<cmd>BookmarkClearAll<cr>", "Clear All" },
+  [";"] = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "Harpoon UI" },
 }

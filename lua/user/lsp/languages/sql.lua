@@ -4,5 +4,5 @@
 -- }
 local formater = require "lvim.lsp.null-ls.formatters"
 formater.setup {
-  { command = "sqlfmt", filetypes = { "sql" } },
+  { command = "pg_format", args = { "-tTf", 2 }, filetypes = { "sql" } },
 }

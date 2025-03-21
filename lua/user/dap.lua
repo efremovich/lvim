@@ -28,7 +28,7 @@ lvim.builtin.dap = {
     level = "info",
   },
   ui = {
-    auto_open = true,
+    auto_open = false,
     notify = {
       threshold = vim.log.levels.INFO,
     },

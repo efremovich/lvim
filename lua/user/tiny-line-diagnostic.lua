@@ -1,15 +1,6 @@
 -- Default configuration
 require("tiny-inline-diagnostic").setup({
   preset = "modern", -- Can be: "modern", "classic", "minimal", "powerline", ghost", "simple", "nonerdfont", "amongus"
-  hi = {
-    error = "DiagnosticError",
-    warn = "DiagnosticWarn",
-    info = "DiagnosticInfo",
-    hint = "DiagnosticHint",
-    arrow = "NonText",
-    background = "CursorLine", -- Can be a highlight or a hexadecimal color (#RRGGBB)
-    mixing_color = "None",     -- Can be None or a hexadecimal color (#RRGGBB). Used to blend the background color with the diagnostic background color with another color.
-  },
   signs = {
     left = "",
     right = "",
@@ -27,7 +18,7 @@ require("tiny-inline-diagnostic").setup({
     show_source = false,
 
     -- Use your defined signs in the diagnostic config table.
-    use_icons_from_diagnostic = false,
+    use_icons_from_diagnostic = true,
 
     -- Throttle the update of the diagnostic when moving cursor, in milliseconds.
     -- You can increase it if you have performance issues.
@@ -87,4 +78,3 @@ require("tiny-inline-diagnostic").setup({
     overwrite_events = nil,
   },
 })
-
